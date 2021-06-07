@@ -1,7 +1,8 @@
-import express, { urlencoded } from "express";
+import express from "express";
 const app = express();
 import dotenv from "dotenv";
 dotenv.config();
+
 import cors from "cors";
 import morgan from "morgan";
 import mongoose from "mongoose";
@@ -10,7 +11,7 @@ const port = process.env.PORT;
 const db = process.env.DB_URL;
 
 // MiddleWares
-app.use(urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 app.use(morgan("tiny"));
@@ -29,5 +30,5 @@ mongoose
   });
 
 app.listen(() => {
-  console.log(`App is running at port ${port}`);
+  console.log(`Server is running at port ${port}`);
 });
